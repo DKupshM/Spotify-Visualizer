@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Spotify Visualizer</string>
+    <string name="title_activity_main__screen">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Music</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="login_text">Log in with Spotify</string>
 </resources>
