@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.spotify.android.appremote.api.ConnectionParams
@@ -11,7 +12,9 @@ import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.protocol.types.PlayerState
 import com.spotify.protocol.types.Track
+import edu.ucsb.cs.cs184.spotify_visualizer.ui.home.Sketch
 import kotlinx.coroutines.launch
+import processing.android.PFragment
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -24,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     private val REDIRECT_URI = "http://edu.ucsb.cs.cs184.spotify_visualizer/callback"
     private var mSpotifyAppRemote: SpotifyAppRemote? = null
 
+    val myCanvas = Sketch()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -34,6 +39,12 @@ class MainActivity : AppCompatActivity() {
             val int = Intent(this, Main_Screen::class.java)
             startActivity(int)
         }
+
+//        setContentView(R.layout.fragment_home)
+//        val myFragment = PFragment(myCanvas)
+//        val canvas_container = findViewById<FrameLayout>(R.id.canvas_container)
+//        myFragment.setView(canvas_container,this)
+
 
     }
 
