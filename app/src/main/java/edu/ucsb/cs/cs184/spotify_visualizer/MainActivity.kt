@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val REDIRECT_URI = "http://edu.ucsb.cs.cs184.spotify_visualizer/callback"
     private var mSpotifyAppRemote: SpotifyAppRemote? = null
 
-    val myCanvas = Sketch()
+    //val myCanvas = Sketch()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
