@@ -30,22 +30,11 @@ import kotlin.coroutines.suspendCoroutine
 
 class Main_Screen : AppCompatActivity() {
 
-    object SpotifySampleContexts {
-        const val TRACK_URI = "spotify:track:4IWZsfEkaK49itBwCTFDXQ"
-        const val ALBUM_URI = "spotify:album:4m2880jivSbbyEGAKfITCa"
-        const val ARTIST_URI = "spotify:artist:3WrFJ7ztbogyGnTHbHJFl2"
-        const val PLAYLIST_URI = "spotify:playlist:37i9dQZEVXbMDoHDwVN2tF"
-        const val PODCAST_URI = "spotify:show:2tgPYIeGErjk6irHRhk9kj"
-    }
-
     private val gson = GsonBuilder().setPrettyPrinting().create()
 
     private val CLIENT_ID = "aac5e0cf9ed24f71868e35c1faeeba9c"
     private val REDIRECT_URI = "http://edu.ucsb.cs.cs184.spotify_visualizer/callback"
 
-    private var playerStateSubscription: Subscription<PlayerState>? = null
-    private var playerContextSubscription: Subscription<PlayerContext>? = null
-    private var capabilitiesSubscription: Subscription<Capabilities>? = null
     private var mSpotifyAppRemote: SpotifyAppRemote? = null
 
     private var mToast: Toast? = null
