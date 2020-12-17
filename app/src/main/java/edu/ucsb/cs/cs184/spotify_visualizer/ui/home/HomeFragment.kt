@@ -7,11 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import edu.ucsb.cs.cs184.spotify_visualizer.R
 import processing.android.PFragment
@@ -48,7 +45,8 @@ class HomeFragment : Fragment() {
         val myFragment = PFragment(myCanvas)
 //        val canvas_container = root.findViewById<FrameLayout>(R.id.canvas_container)
 //
-        myFragment.setView(canvas_container, listener)
+
+        //myFragment.setView(canvas_container, listener)
 
         return root
     }
