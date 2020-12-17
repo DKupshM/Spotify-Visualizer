@@ -11,7 +11,7 @@ class Sketch : PApplet() {
     var numVertices = 20
     val spacing = 360f/numVertices
     var fOff = 0f
-    var speed = 0.03f
+    var speed = 0.1f
 
     override fun settings(){
         fullScreen()
@@ -30,20 +30,20 @@ class Sketch : PApplet() {
         fill(120f,30f,200f,100f)
 
 
-        val beat = fCount%30
-        if(beat in 0..10){
-            speed = 0.2f
-        } else {
-            speed = 0.03f
-        }
+//        val beat = fCount%30
+//        if(beat in 0..10){
+//            speed = 0.2f
+//        } else {
+//            speed = 0.03f
+//        }
 
 
         fOff+=speed
 
-        var m1 = 75*cos(fOff)
-        val m2 = 75*cos(fOff)
+        val m1 = 75*cos(fOff/1.5f)
+        val m2 = 75*cos(fOff/4)
 
-        val m3 = cos(fOff)
+        val m3 = sin(fOff/3)
         val m4 = 2*cos(fOff)
 
         val layers = 10
