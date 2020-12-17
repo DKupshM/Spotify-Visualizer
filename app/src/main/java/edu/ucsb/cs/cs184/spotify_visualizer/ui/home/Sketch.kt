@@ -10,7 +10,7 @@ class Sketch : PApplet() {
     var numVertices = 20
     val spacing = 360f/numVertices
     var fOff = 0f
-    var speed = 0.4f
+    var speed = 0.6f
 
     override fun settings(){
         //fullScreen()
