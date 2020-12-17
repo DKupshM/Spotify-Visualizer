@@ -10,5 +10,7 @@ From the spotify API, you need to add your development fingerprint so that music
 
 > keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
 
-Then, this fingerprint has to be added to the developer settings. Ask Dylan to do that for you.
+Then, this fingerprint has to be added to the spotify developer app settings. Ask Dylan to do that for you.
+
+Finally, you need to have spotify downloaded on the phone that you are using the app.
 
