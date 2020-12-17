@@ -2,7 +2,6 @@ package edu.ucsb.cs.cs184.spotify_visualizer.ui.home
 
 import android.graphics.Color
 import processing.core.PApplet
-import kotlin.math.pow
 
 class Sketch : PApplet() {
     var size = 100f
