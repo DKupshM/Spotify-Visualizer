@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs184.spotify_visualizer
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
@@ -69,11 +70,11 @@ class Main_Screen : AppCompatActivity() {
     }
 
     fun playSong(uri:String) {
-        mSpotifyAppRemote!!.playerApi.play(uri)
+        assertAppRemoteConnected().playerApi.play(uri)
     }
 
     fun playPauseClicked(view: View) {
-        mSpotifyAppRemote!!.playerApi.getPlayerState()
+        assertAppRemoteConnected().playerApi.getPlayerState()
                 .setResultCallback { playerState ->
                     if(playerState.isPaused) {
                         mSpotifyAppRemote!!.playerApi.resume()
@@ -87,11 +88,11 @@ class Main_Screen : AppCompatActivity() {
     }
 
     fun skipClicked(view: View) {
-        mSpotifyAppRemote!!.playerApi.skipNext()
+        assertAppRemoteConnected().playerApi.skipNext()
     }
 
     fun prevClicked(view: View){
-        mSpotifyAppRemote!!.playerApi.skipPrevious()
+        assertAppRemoteConnected().playerApi.skipPrevious()
     }
 
 
@@ -148,7 +149,7 @@ class Main_Screen : AppCompatActivity() {
     private fun onConnected() {
         showToast("Connected")
 
-        mSpotifyAppRemote!!.playerApi
+        assertAppRemoteConnected().playerApi
                 .subscribeToPlayerState()
                 .setEventCallback { playerState: PlayerState ->
                     playerStateEventCallback(playerState)
@@ -164,6 +165,8 @@ class Main_Screen : AppCompatActivity() {
     }
 
     private fun onDisconnected() {
+        val int = Intent(this, MainActivity::class.java)
+        startActivity(int)
     }
 
     private suspend fun connectToAppRemote(showAuthView: Boolean): SpotifyAppRemote? =
