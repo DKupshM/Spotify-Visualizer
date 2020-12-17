@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edu.ucsb.cs.cs184.spotify_visualizer.R
 
-class ContactsAdapter (private val mSongs: List<Song>, val itemClickListener: (View, Int, Int) -> Unit) : RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
+class ContactsAdapter (private val mSongs: List<Song>, val itemClickListener: (View, Int, Int) -> Unit, val setImageCover: (ImageView, Int) -> Unit) : RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     fun <T : RecyclerView.ViewHolder> T.onClick(event: (view: View, position: Int, type: Int) -> Unit): T {
         itemView.setOnClickListener {
@@ -50,6 +50,7 @@ class ContactsAdapter (private val mSongs: List<Song>, val itemClickListener: (V
         songTv.text = song.getName()
 
         val art = viewHolder.coverArt
+        setImageCover(art, position)
     }
 
     // Returns the total count of items in the list

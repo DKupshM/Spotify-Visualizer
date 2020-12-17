@@ -12,11 +12,6 @@ class Song {
         this.imageURL = imageURL
     }
 
-    constructor(uri: String, name: String) {
-        this.uri = uri
-        this.name = name
-    }
-
 
     fun getUri() : String {
         return uri
