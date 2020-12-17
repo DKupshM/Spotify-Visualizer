@@ -51,7 +51,7 @@ class Main_Screen : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                        R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_profile
                 )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -80,6 +80,10 @@ class Main_Screen : AppCompatActivity() {
 
     fun skipClicked(view: View) {
         mSpotifyAppRemote!!.playerApi.skipNext()
+    }
+
+    fun prevClicked(view: View){
+        mSpotifyAppRemote!!.playerApi.skipPrevious()
     }
 
 
@@ -128,7 +132,7 @@ class Main_Screen : AppCompatActivity() {
     private fun onConnected() {
         showToast("Connected")
 
-        mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+        mSpotifyAppRemote?.playerApi?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
 
         mSpotifyAppRemote!!.playerApi
                 .subscribeToPlayerState()
