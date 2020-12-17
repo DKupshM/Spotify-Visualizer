@@ -19,8 +19,9 @@ import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.android.appremote.api.error.SpotifyDisconnectedException
-import com.spotify.protocol.client.Subscription
-import com.spotify.protocol.types.*
+import com.spotify.protocol.types.Image
+import com.spotify.protocol.types.PlayerState
+import com.spotify.protocol.types.Track
 import kotlinx.coroutines.launch
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
@@ -117,7 +118,6 @@ class Main_Screen : AppCompatActivity() {
     }
 
     private fun connect(showAuthView: Boolean) {
-
         SpotifyAppRemote.disconnect(mSpotifyAppRemote)
         lifecycleScope.launch {
             try {
@@ -183,5 +183,6 @@ class Main_Screen : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote)
     }
 }
