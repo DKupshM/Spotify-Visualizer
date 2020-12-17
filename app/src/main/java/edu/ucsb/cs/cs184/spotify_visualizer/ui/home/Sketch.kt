@@ -14,7 +14,7 @@ class Sketch : PApplet() {
     var speed = 0.1f
 
     override fun settings(){
-        fullScreen()
+        //fullScreen()
     }
 
     override fun setup(){
