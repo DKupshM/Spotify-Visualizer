@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/Spotify_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:queryHint="@string/search_hint"
-        app:layout_constraintBottom_toTopOf="@id/searched_Songs"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </androidx.appcompat.widget.SearchView>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searched_Songs"
         android:layout_width="0dp"
@@ -25,7 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Spotify_search">
+        app:layout_constraintTop_toTopOf="parent">
 
     </androidx.recyclerview.widget.RecyclerView>
 

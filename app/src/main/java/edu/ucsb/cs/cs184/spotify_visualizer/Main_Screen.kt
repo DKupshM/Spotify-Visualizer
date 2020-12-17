@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs184.spotify_visualizer
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,7 +20,9 @@ import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.android.appremote.api.error.SpotifyDisconnectedException
+import com.spotify.protocol.client.CallResult
 import com.spotify.protocol.types.Image
+import com.spotify.protocol.types.ImageUri
 import com.spotify.protocol.types.PlayerState
 import com.spotify.protocol.types.Track
 import kotlinx.coroutines.launch
@@ -52,7 +55,7 @@ class Main_Screen : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_profile
+                        R.id.navigation_dashboard, R.id.navigation_home
                 )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -63,6 +66,10 @@ class Main_Screen : AppCompatActivity() {
         mToast?.cancel()
         mToast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
         mToast?.show()
+    }
+
+    fun playSong(uri:String) {
+        mSpotifyAppRemote!!.playerApi.play(uri)
     }
 
     fun playPauseClicked(view: View) {
@@ -96,6 +103,13 @@ class Main_Screen : AppCompatActivity() {
                 .setResultCallback { bitmap ->
                     findViewById<ImageView>(R.id.track_cover).setImageBitmap(bitmap)
                 }
+    }
+
+    fun getTrackCoverArt(imageURI : String): CallResult<Bitmap>? {
+        return assertAppRemoteConnected()
+            .imagesApi
+            .getImage(ImageUri(imageURI),Image.Dimension.LARGE)
+
     }
 
     private fun updateSongTitle(playerState: PlayerState) {
@@ -134,8 +148,6 @@ class Main_Screen : AppCompatActivity() {
     private fun onConnected() {
         showToast("Connected")
 
-        mSpotifyAppRemote?.playerApi?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
-
         mSpotifyAppRemote!!.playerApi
                 .subscribeToPlayerState()
                 .setEventCallback { playerState: PlayerState ->
@@ -148,6 +160,7 @@ class Main_Screen : AppCompatActivity() {
         updatePlayPauseButton(playerState)
         updateTrackCoverArt(playerState)
         updateSongTitle(playerState)
+        Log.d("S", playerState.track.imageUri.toString())
     }
 
     private fun onDisconnected() {

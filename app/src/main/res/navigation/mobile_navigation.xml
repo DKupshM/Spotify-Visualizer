@@ -17,10 +17,4 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
-
-    <fragment
-        android:id="@+id/navigation_profile"
-        android:name="edu.ucsb.cs.cs184.spotify_visualizer.ui.notifications.NotificationsFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
 </navigation>
