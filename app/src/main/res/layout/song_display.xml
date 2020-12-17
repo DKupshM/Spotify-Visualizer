@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
-    android:paddingStart="2dp">
+    android:paddingStart="2dp"
+    android:background="@color/black"
+    >
 
     <ImageView
         android:id="@+id/album_cover"
@@ -20,35 +22,15 @@
         android:layout_height="20dp"
         />
 
-
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/album_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/song_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:ems="3"
-            android:fontFamily="sans-serif-condensed"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Here goes the name of song that i forgot"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/artist_title"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:fontFamily="sans-serif-light"
-            android:gravity="start|center_vertical"
-            android:text="Pepito Jones"
-            android:textSize="20sp" />
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Pepito Jones"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
 
 

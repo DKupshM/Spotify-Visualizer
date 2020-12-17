@@ -1,20 +1,34 @@
 package edu.ucsb.cs.cs184.spotify_visualizer.ui.dashboard
 
-class Song(val name: String, val artist: String) {
+class Song {
 
-    companion object {
-        private var lastSongId = 0
-        fun createSongsList(search: String, numSongs: Int): ArrayList<Song> {
-            val songs = ArrayList<Song>()
-            for (i in 1..numSongs) {
-                songs.add(Song("$search " + ++lastSongId, "Artist $lastSongId"))
-            }
-            return songs
-        }
+    private var uri : String = ""
+    private var name : String = ""
+    private var imageURL : String = ""
 
-        fun getSongsList(songs: ArrayList<Song>){
-            //function should find the songs that would be reccomended by search
-
-        }
+    constructor( uri: String,  name: String, imageURL: String) {
+        this.uri = uri
+        this.name = name
+        this.imageURL = imageURL
     }
+
+    constructor(uri: String, name: String) {
+        this.uri = uri
+        this.name = name
+    }
+
+
+    fun getUri() : String {
+        return uri
+    }
+
+    fun getName() : String {
+        return this.name
+    }
+
+    fun getImageURL() : String {
+        return  this.imageURL
+    }
+
+
 }
