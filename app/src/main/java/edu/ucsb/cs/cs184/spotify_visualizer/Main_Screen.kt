@@ -19,8 +19,9 @@ import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.android.appremote.api.error.SpotifyDisconnectedException
-import com.spotify.protocol.client.Subscription
-import com.spotify.protocol.types.*
+import com.spotify.protocol.types.Image
+import com.spotify.protocol.types.PlayerState
+import com.spotify.protocol.types.Track
 import kotlinx.coroutines.launch
 import kotlin.coroutines.Continuation
 import kotlin.coroutines.resume
@@ -51,7 +52,7 @@ class Main_Screen : AppCompatActivity() {
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
                 setOf(
-                        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+                        R.id.navigation_dashboard, R.id.navigation_home, R.id.navigation_profile
                 )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -80,6 +81,10 @@ class Main_Screen : AppCompatActivity() {
 
     fun skipClicked(view: View) {
         mSpotifyAppRemote!!.playerApi.skipNext()
+    }
+
+    fun prevClicked(view: View){
+        mSpotifyAppRemote!!.playerApi.skipPrevious()
     }
 
 
@@ -113,7 +118,6 @@ class Main_Screen : AppCompatActivity() {
     }
 
     private fun connect(showAuthView: Boolean) {
-
         SpotifyAppRemote.disconnect(mSpotifyAppRemote)
         lifecycleScope.launch {
             try {
@@ -128,7 +132,7 @@ class Main_Screen : AppCompatActivity() {
     private fun onConnected() {
         showToast("Connected")
 
-        mSpotifyAppRemote?.getPlayerApi()?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
+        mSpotifyAppRemote?.playerApi?.play("spotify:playlist:37i9dQZF1DX2sUQwD7tbmL");
 
         mSpotifyAppRemote!!.playerApi
                 .subscribeToPlayerState()
@@ -179,5 +183,6 @@ class Main_Screen : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        SpotifyAppRemote.disconnect(mSpotifyAppRemote)
     }
 }

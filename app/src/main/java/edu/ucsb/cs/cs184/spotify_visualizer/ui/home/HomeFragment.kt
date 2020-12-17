@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import edu.ucsb.cs.cs184.spotify_visualizer.R
@@ -42,15 +43,12 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
         canvas_container = root.findViewById(R.id.canvas_container)
         val myFragment = PFragment(myCanvas)
 //        val canvas_container = root.findViewById<FrameLayout>(R.id.canvas_container)
 //
-        myFragment.setView(canvas_container,listener)
+        myFragment.setView(canvas_container, listener)
 
         return root
     }
