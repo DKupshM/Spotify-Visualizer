@@ -124,6 +124,8 @@ class Main_Screen : AppCompatActivity() {
                 mSpotifyAppRemote = connectToAppRemote(showAuthView)
                 onConnected()
             } catch (error: Throwable) {
+
+                showToast(error.toString())
                 onDisconnected()
             }
         }
@@ -149,7 +151,6 @@ class Main_Screen : AppCompatActivity() {
     }
 
     private fun onDisconnected() {
-        showToast("Disconnected")
     }
 
     private suspend fun connectToAppRemote(showAuthView: Boolean): SpotifyAppRemote? =
