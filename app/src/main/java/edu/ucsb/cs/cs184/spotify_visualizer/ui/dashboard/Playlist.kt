@@ -40,7 +40,7 @@ fun createPlaylist(): ArrayList<Playlist> {
     playlists.add(Playlist("spotify:playlist:37i9dQZF1DWXRqgorJj26U","Rock Classics",
         "spotify:image:ab67616d0000b273fc4f17340773c6c3579fea0d"))
     playlists.add(Playlist("spotify:playlist:3Di88mvYplBtkDBIzGLiiM", "EDM Hits of 2020",
-        "spotify:image:ab67616d0000b2735e90ff76fd49a23f7333de76'"))
+        "spotify:image:ab67616d0000b2735e90ff76fd49a23f7333de76"))
     playlists.add(Playlist("spotify:playlist:7IBJWKSiPeYvMqU3KPztbX", "Vibes For The Day",
         "spotify:image:ab67616d0000b2737aeaadf1d7f5b8167802af73"))
     playlists.add(Playlist("spotify:playlist:37i9dQZF1DXbcP8BbYEQaO", "Night Pop",
@@ -48,7 +48,7 @@ fun createPlaylist(): ArrayList<Playlist> {
     playlists.add(Playlist("spotify:playlist:37i9dQZEVXbLRQDuF5jeBp", "US Top 50",
         "spotify:image:ab67616d0000b273c8ac560f803bba4902f8bbc5"))
     playlists.add(Playlist("spotify:playlist:0vvXsWCC9xrXsKd4FyS8kM", "Lofi Hip-Hop Beats To Study To",
-        "spotify:image:ab67616d0000b2739219df1009403ac8f4d4f0b7-"))
+        "spotify:image:ab67616d0000b2739219df1009403ac8f4d4f0b7"))
     playlists.add(Playlist("spotify:playlist:0vvXsWCC9xrXsKd4FyS8kM", "Lofi Hip-Hop Beats To Study To",
         "spotify:image:ab67616d0000b27397699e56b6a19f3d2703f32d"))
     return playlists
