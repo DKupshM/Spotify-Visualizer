@@ -15,7 +15,7 @@ import edu.ucsb.cs.cs184.spotify_visualizer.Main_Screen
 import edu.ucsb.cs.cs184.spotify_visualizer.R
 
 class DashboardFragment : Fragment() {
-    var songs: ArrayList<Song> = ArrayList<Song>()
+    var playlists: ArrayList<Playlist> = ArrayList<Playlist>()
 
     var mToast : Toast? = null
 
@@ -35,23 +35,16 @@ class DashboardFragment : Fragment() {
 //        })
 
 
-        val rvSongs = root.findViewById<View>(R.id.searched_Songs) as RecyclerView
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n",
-            "Mint Playlist",
-            "spotify:image:ab67616d0000b273e49b1bcaa060156dd2019e17"))
-        songs.add(Song("spotify:album:79C6OXDHPGZtCb7ySUxyIV","Holiday Songs",
-            "spotify:image:ab67616d0000b27356a8fbe72905057674ac41f7"))
-        songs.add(Song("spotify:playlist:37i9dQZF1DXcBWIGoYBM5M","Todays Hits","spotify:image:ab67616d0000b27333b8541201f1ef38941024be"))
-        songs.add(Song("spotify:playlist:3Di88mvYplBtkDBIzGLiiM","EDM Hits","spotify:image:ab67616d0000b273b6567be9f8b996a2b5f9b7fa"))
-        songs.add(Song("spotify:playlist:37i9dQZF1DWXRqgorJj26U","Rock Classics","spotify:image:ab67616d0000b273fc4f17340773c6c3579fea0d"))
+        val rvPlaylists = root.findViewById<View>(R.id.searched_Songs) as RecyclerView
+        playlists = createPlaylist()
 
 
         // Create adapter passing in the sample user data
-        val adapter = ContactsAdapter(songs, itemOnClick, setImageCover)
+        val adapter = ContactsAdapter(playlists, itemOnClick, setImageCover)
         // Attach the adapter to the recyclerview to populate items
-        rvSongs.adapter = adapter
+        rvPlaylists.adapter = adapter
         // Set layout manager to position the items
-        rvSongs.layoutManager = LinearLayoutManager(this.context)
+        rvPlaylists.layoutManager = LinearLayoutManager(this.context)
 
         return root
     }
@@ -60,14 +53,14 @@ class DashboardFragment : Fragment() {
 
 
     val itemOnClick: (View, Int, Int) -> Unit = { view, position, type ->
-        var song = songs.get(position)
-        (activity as Main_Screen).playSong(song.getUri())
-        Log.d("Hello", song.getImageURL())
+        var playlist = playlists.get(position)
+        (activity as Main_Screen).playSong(playlist.getUri())
+        Log.d("Hello", playlist.getImageURL())
     }
 
     val setImageCover: (ImageView, Int) -> Unit = { view, position ->
-        var song = songs.get(position)
-        (activity as Main_Screen).getTrackCoverArt(song.getImageURL())!!
+        var playlist = playlists.get(position)
+        (activity as Main_Screen).getTrackCoverArt(playlist.getImageURL())!!
             .setResultCallback { bitmap ->
                 view.setImageBitmap(bitmap)
             }

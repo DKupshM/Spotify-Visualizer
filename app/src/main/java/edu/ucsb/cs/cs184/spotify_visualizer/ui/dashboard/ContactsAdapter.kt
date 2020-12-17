@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edu.ucsb.cs.cs184.spotify_visualizer.R
 
-class ContactsAdapter (private val mSongs: List<Song>, val itemClickListener: (View, Int, Int) -> Unit, val setImageCover: (ImageView, Int) -> Unit) : RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
+class ContactsAdapter (private val mSongs: List<Playlist>, val itemClickListener: (View, Int, Int) -> Unit, val setImageCover: (ImageView, Int) -> Unit) : RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     fun <T : RecyclerView.ViewHolder> T.onClick(event: (view: View, position: Int, type: Int) -> Unit): T {
         itemView.setOnClickListener {
@@ -44,10 +44,10 @@ class ContactsAdapter (private val mSongs: List<Song>, val itemClickListener: (V
     // Involves populating data into the item through holder
     override fun onBindViewHolder(viewHolder: ContactsAdapter.ViewHolder, position: Int) {
         // Get the data model based on position
-        val song: Song = mSongs[position]
+        val playlist: Playlist = mSongs[position]
         // Set item views based on your views and data model
         val songTv = viewHolder.songTextView
-        songTv.text = song.getName()
+        songTv.text = playlist.getName()
 
         val art = viewHolder.coverArt
         setImageCover(art, position)
