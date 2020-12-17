@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,11 +35,11 @@ class DashboardFragment : Fragment() {
 
 
         val rvSongs = root.findViewById<View>(R.id.searched_Songs) as RecyclerView
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","Hi",""))
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","There",""))
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","Ladies",""))
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","And",""))
-        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","Gents",""))
+        songs.add(Song("spotify:playlist:37i9dQZF1DX4dyzvuaRJ0n","Mint Playlist",""))
+        songs.add(Song("spotify:album:79C6OXDHPGZtCb7ySUxyIV","Holiday Songs",""))
+        songs.add(Song("spotify:playlist:37i9dQZF1DXcBWIGoYBM5M","Todays Hits",""))
+        songs.add(Song("spotify:playlist:3Di88mvYplBtkDBIzGLiiM","EDM Hits",""))
+        songs.add(Song("spotify:playlist:37i9dQZF1DWXRqgorJj26U","Rock Classics",""))
 
 
         // Create adapter passing in the sample user data
@@ -50,13 +49,6 @@ class DashboardFragment : Fragment() {
         // Set layout manager to position the items
         rvSongs.layoutManager = LinearLayoutManager(this.context)
 
-        val svSongs = activity?.findViewById<SearchView>(R.id.Spotify_search)
-        svSongs?.isIconified = false
-        svSongs?.setOnSearchClickListener{
-            val search = svSongs.query.toString()
-            makeToast(search)
-        }
-
         return root
     }
 
@@ -65,13 +57,6 @@ class DashboardFragment : Fragment() {
         var song = songs.get(position)
         (activity as Main_Screen).playSong(song.getUri())
         Log.d("Hello", song.getName())
-    }
-
-
-    private fun makeToast(text: String){
-        mToast?.cancel()
-        mToast = Toast.makeText(this.activity, text, Toast.LENGTH_SHORT)
-        mToast?.show()
     }
 }
 

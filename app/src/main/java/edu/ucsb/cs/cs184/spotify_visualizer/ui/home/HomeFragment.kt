@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 //        val canvas_container = root.findViewById<FrameLayout>(R.id.canvas_container)
 //
 
-        //myFragment.setView(canvas_container, listener)
+        myFragment.setView(canvas_container, listener)
 
         return root
     }
