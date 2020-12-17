@@ -194,7 +194,10 @@ class Main_Screen : AppCompatActivity() {
                 return it
             }
         }
-        Log.e("", "Disconnected")
+        showToast("Disconnected")
+        val int = Intent(this, MainActivity::class.java)
+        startActivity(int)
+
         throw SpotifyDisconnectedException()
     }
 
