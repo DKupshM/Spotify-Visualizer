@@ -12,5 +12,5 @@ From the spotify API, you need to add your development fingerprint so that music
 
 Then, this fingerprint has to be added to the spotify developer app settings. Ask Dylan to do that for you.
 
-Finally, you need to have spotify downloaded on the phone that you are using the app.
+Finally, you need to have spotify downloaded and logged in on the phone that you are using the app.
 
