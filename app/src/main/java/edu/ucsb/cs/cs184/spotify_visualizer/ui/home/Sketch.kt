@@ -10,7 +10,7 @@ class Sketch : PApplet() {
     var numVertices = 20
     val spacing = 360f/numVertices
     var fOff = 0f
-    var speed = 0.1f
+    var speed = 0.4f
 
     override fun settings(){
         //fullScreen()
@@ -39,19 +39,19 @@ class Sketch : PApplet() {
 
         fOff+=speed
 
-        val m1 = 75*cos(fOff/1.5f)
-        val m2 = 75*cos(fOff/4)
+        val m1 = 0.55*size*sin(fOff/7f)
+        val m2 = 0.85*size*cos(fOff/12)
 
-        val m3 = sin(fOff/3)
-        val m4 = 2*cos(fOff)
+        val m3 = 1.7f*sin(fOff/8)
+        val m4 = 2*cos(fOff/9)
 
-        val layers = 10
+        val layers = 5
 
         for(j in 1..layers) {
-            val R = map(j.toFloat(),1f,layers.toFloat(),30f,255f)
+            val R = map(j.toFloat(),1f,layers.toFloat(),255f,30f)
             val A = map(j.toFloat(),1f,layers.toFloat(),200f,30f)
-            val G = map(sin(fOff/2),-1f,1f,0f,255f)
-            val B = map(sin(fOff/4),-1f,1f,0f,255f)
+            val G = map(sin(fOff/8),-1f,1f,0f,255f)
+            val B = map(sin(fOff/12),-1f,1f,0f,255f)
 
             val layerSize = map(j.toFloat(),1f,layers.toFloat(),1f,5f)
             fill(R,G,B,A)
@@ -60,18 +60,31 @@ class Sketch : PApplet() {
             for (i in 0..numVertices) {
                 val angle = i * spacing
 
-                var x = cos(radians(angle)) * (layerSize*size - m1)
-                var y = sin(radians(angle)) * (layerSize*size + m2)
+                var x : Float
+                var y : Float
+                if(j%2==0){
+                    x = (cos(radians(angle)) * (layerSize*size - m1)).toFloat()
+                    y = (sin(radians(angle)) * (layerSize*size + m2)).toFloat()
+                } else {
+                    x = (cos(radians(angle)) * (layerSize*size - m2)).toFloat()
+                    y = (sin(radians(angle)) * (layerSize*size + m1)).toFloat()
+                }
+
 
                 if (i == 0) {
-                    vertex(x, y)
+                    vertex(x.toFloat(), y.toFloat())
                 } else {
                     val cAngle = angle - spacing / 2
 
                     val cX = cos(radians(cAngle)) * 180
                     val cY = sin(radians(cAngle)) * 180
 
-                    quadraticVertex(m3 * cX, (m4 * cY).toFloat(), x, y)
+                    if(j%2==0){
+                        quadraticVertex(m3 * cX, (m4 * cY), x, y)
+                    } else {
+                        quadraticVertex(m4 * cX, (m3 * cY), x, y)
+                    }
+
                 }
 
             }
