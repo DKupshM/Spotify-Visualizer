@@ -14,6 +14,7 @@
         android:theme="@style/Theme.SpotifyVisualizer">
         <activity
             android:name=".Main_Screen"
+            android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main__screen"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
