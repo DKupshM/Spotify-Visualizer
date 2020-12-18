@@ -29,15 +29,10 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-//        val textView: TextView = root.findViewById(R.id.text_dashboard)
-//        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-//            textView.text = it
-//        })
 
 
         val rvPlaylists = root.findViewById<View>(R.id.searched_Songs) as RecyclerView
         playlists = createPlaylist()
-
 
         // Create adapter passing in the sample user data
         val adapter = ContactsAdapter(playlists, itemOnClick, setImageCover)
@@ -48,8 +43,6 @@ class DashboardFragment : Fragment() {
 
         return root
     }
-
-
 
 
     val itemOnClick: (View, Int, Int) -> Unit = { view, position, type ->

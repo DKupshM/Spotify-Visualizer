@@ -55,10 +55,8 @@ class Main_Screen : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
-                setOf(
-                        R.id.navigation_dashboard, R.id.navigation_home
-                )
-        )
+                setOf( R.id.navigation_dashboard, R.id.navigation_home ))
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -122,6 +120,15 @@ class Main_Screen : AppCompatActivity() {
         }
     }
 
+    private fun updateArtistName(playerState: PlayerState) {
+        val track: Track? = playerState.track
+        if (track != null) {
+            findViewById<TextView>(R.id.artist_name).text = track.artist.name.toString()
+        } else {
+            findViewById<TextView>(R.id.artist_name).text = ""
+        }
+    }
+
 
     private fun updatePlayPauseButton(playerState: PlayerState) {
         // Invalidate play / pause
@@ -139,8 +146,16 @@ class Main_Screen : AppCompatActivity() {
                 mSpotifyAppRemote = connectToAppRemote(showAuthView)
                 onConnected()
             } catch (error: Throwable) {
+                val errorStr = error.toString()
 
-                showToast(error.toString())
+                if (errorStr == "com.spotify.android.appremote.api.error.CouldNotFindSpotifyApp")
+                    showToast("Please Download Spotify App from Play Store to connect to Visualizer")
+
+                else if(errorStr == "com.spotify.android.appremote.api.error.NotLoggedInException: {\"message\":\"The user must go to the Spotify and log-in\"}")
+                    showToast("User must go to Spotify App and log-in or sign up")
+
+                else{ showToast(errorStr) }
+
                 onDisconnected()
             }
         }
@@ -161,8 +176,10 @@ class Main_Screen : AppCompatActivity() {
         updatePlayPauseButton(playerState)
         updateTrackCoverArt(playerState)
         updateSongTitle(playerState)
+        updateArtistName(playerState)
         Log.d("S", playerState.track.imageUri.toString())
     }
+
 
     private fun onDisconnected() {
         val int = Intent(this, MainActivity::class.java)

@@ -7,19 +7,19 @@
     android:paddingBottom="5dp"
     android:paddingTop="5dp"
     android:paddingStart="2dp"
+    android:paddingEnd="2dp"
     android:background="@color/black"
     >
 
     <ImageView
         android:id="@+id/album_cover"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/sample_image" />
+        android:layout_width="@dimen/playlist_cover_sz"
+        android:layout_height="@dimen/playlist_cover_sz"
+        android:layout_gravity="center_horizontal"/>
 
     <View
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/space"
+        android:layout_height="@dimen/space"
         />
 
     <TextView
@@ -27,10 +27,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="sans-serif-light"
-        android:gravity="center"
-        android:text="Pepito Jones"
+        android:gravity="left"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="@dimen/playlist_title_sz" />
 
 
 

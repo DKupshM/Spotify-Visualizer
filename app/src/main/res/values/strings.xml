@@ -6,4 +6,5 @@
     <string name="title_profile">Profile</string>
     <string name="login_text">Log in with Spotify</string>
     <string name="search_hint">Search for a song from Spotify...</string>
+    <string name="no_song">No Song Playing</string>
 </resources>
